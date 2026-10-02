@@ -1,16 +1,47 @@
-# React + Vite
+# DevPulse - GitHub Inspector
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+DevPulse is a responsive React application that allows users to inspect GitHub developers and explore their public repositories.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Search GitHub developers by username
+- Display developer profile information and statistics
+- View public repositories
+- Filter repositories by multiple programming languages
+- Sort repositories by:
+  - Recently Updated
+  - Most Stars
+  - Most Forks
+- Debounced GitHub API search
+- URL-driven search, language filters, and sorting
+- Pin repositories to a persistent Pinboard
+- Pinboard managed with React Context and useReducer
+- Persistent pins using localStorage
+- Loading and error handling
+- Performance optimization using useMemo and useCallback
 
-## React Compiler
+## Technologies Used
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React.js
+- Vite
+- JavaScript
+- GitHub REST API
+- React Hooks
+- Context API
+- useReducer
+- localStorage
+- CSS
 
-## Expanding the Oxlint configuration
+## Environment Setup
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+Create a .env file in the project root and add:
+
+VITE_API_TOKEN=your_github_token
+
+Do not commit the .env file to GitHub.
+
+## Running the Project
+
+```bash
+npm install
+npm run dev

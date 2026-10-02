@@ -91,7 +91,11 @@ function App() {
   const [searchInput, setSearchInput] = useState(params.get("user") || "");
   const [profile, setProfile] = useState(null);
   const [repos, setRepos] = useState([]);
-  const [language, setLanguage] = useState("All");
+  const [language, setLanguage] = useState(
+  params.get("lang")
+    ? params.get("lang").split(",").filter(Boolean)
+    : []
+);
   const [sort, setSort] = useState(params.get("sort") || "updated");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -114,11 +118,11 @@ function App() {
       url.searchParams.delete("user");
     }
 
-    if (language !== "All") {
-      url.searchParams.set("lang", language);
-    } else {
-      url.searchParams.delete("lang");
-    }
+    if (language.length > 0) {
+  url.searchParams.set("lang", language.join(","));
+} else {
+  url.searchParams.delete("lang");
+}
 
     url.searchParams.set("sort", sort);
 
@@ -184,18 +188,20 @@ function App() {
   }, [username]);
 
   const languages = useMemo(() => {
-    const uniqueLanguages = repos
-      .map((repo) => repo.language)
-      .filter(Boolean);
+  const uniqueLanguages = repos
+    .map((repo) => repo.language)
+    .filter(Boolean);
 
-    return ["All", ...new Set(uniqueLanguages)];
-  }, [repos]);
+  return [...new Set(uniqueLanguages)];
+}, [repos]);
 
   const filteredRepos = useMemo(() => {
     let result =
-      language === "All"
-        ? [...repos]
-        : repos.filter((repo) => repo.language === language);
+  language.length === 0
+    ? [...repos]
+    : repos.filter((repo) =>
+        language.includes(repo.language)
+      );
 
     if (sort === "stars") {
       result.sort((a, b) => b.stargazers_count - a.stargazers_count);
@@ -306,16 +312,26 @@ function App() {
             <section className="controls">
               <div>
                 <label>Language</label>
-                <select
-                  value={language}
-                  onChange={(e) => setLanguage(e.target.value)}
-                >
-                  {languages.map((lang) => (
-                    <option key={lang} value={lang}>
-                      {lang}
-                    </option>
-                  ))}
-                </select>
+                <div className="language-options">
+  {languages.map((lang) => (
+    <label key={lang}>
+      <input
+        type="checkbox"
+        checked={language.includes(lang)}
+        onChange={() => {
+          if (language.includes(lang)) {
+            setLanguage(
+              language.filter((item) => item !== lang)
+            );
+          } else {
+            setLanguage([...language, lang]);
+          }
+        }}
+      />
+      {lang}
+    </label>
+  ))}
+</div>
               </div>
 
               <div>
