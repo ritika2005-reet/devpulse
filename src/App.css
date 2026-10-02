@@ -1,0 +1,317 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f7fb;
+  color: #172033;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+.header {
+  padding: 20px 6%;
+  background: #172033;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.header p {
+  margin: 4px 0 0;
+  opacity: 0.7;
+}
+
+.pinboard-button {
+  border: 0;
+  border-radius: 10px;
+  padding: 11px 16px;
+  background: white;
+  color: #172033;
+  font-weight: 600;
+}
+
+.container {
+  width: min(1150px, 92%);
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.hero h2 {
+  font-size: 34px;
+  margin-bottom: 8px;
+}
+
+.hero p {
+  color: #687386;
+}
+
+.search-box {
+  max-width: 650px;
+  margin: 25px auto 0;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 16px 18px;
+  border: 1px solid #d9deea;
+  border-radius: 12px;
+  outline: none;
+  background: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.profile-card {
+  display: flex;
+  gap: 25px;
+  padding: 25px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+  margin-bottom: 25px;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+
+.profile-details h2 {
+  margin: 0 0 4px;
+}
+
+.profile-details p {
+  color: #687386;
+}
+
+.stats {
+  display: flex;
+  gap: 25px;
+  margin: 18px 0;
+  flex-wrap: wrap;
+}
+
+.stats span {
+  color: #687386;
+}
+
+.stats strong {
+  color: #172033;
+  margin-right: 5px;
+}
+
+.profile-details a,
+.repo-card a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.controls {
+  display: flex;
+  gap: 15px;
+  margin: 25px 0;
+  flex-wrap: wrap;
+}
+
+.controls div {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.controls label {
+  font-weight: 600;
+}
+
+.controls select {
+  padding: 10px 14px;
+  border: 1px solid #d9deea;
+  border-radius: 9px;
+  background: white;
+}
+
+.repo-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.repo-heading span {
+  color: #687386;
+}
+
+.repo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.repo-card {
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.06);
+}
+
+.repo-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.repo-card h3 {
+  margin-top: 0;
+  word-break: break-word;
+}
+
+.repo-description {
+  min-height: 45px;
+  color: #687386;
+}
+
+.repo-info {
+  display: flex;
+  gap: 12px;
+  margin: 18px 0;
+  font-size: 14px;
+  color: #687386;
+  flex-wrap: wrap;
+}
+
+.pin-button {
+  border: 1px solid #d9deea;
+  background: white;
+  border-radius: 8px;
+  padding: 6px 9px;
+  height: fit-content;
+}
+
+.pin-button.pinned {
+  background: #172033;
+  color: white;
+}
+
+.empty-state,
+.message,
+.error {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.error {
+  color: #c62828;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: flex-end;
+  z-index: 10;
+}
+
+.pinboard {
+  width: min(430px, 90%);
+  height: 100%;
+  background: white;
+  padding: 25px;
+  overflow-y: auto;
+}
+
+.pinboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pinboard-header button {
+  border: 0;
+  background: none;
+  font-size: 30px;
+}
+
+.pinned-repo {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 15px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.pinned-repo h3,
+.pinned-repo p {
+  margin: 4px 0;
+}
+
+.pinned-repo p {
+  color: #687386;
+}
+
+.pinned-repo button {
+  height: fit-content;
+  border: 0;
+  border-radius: 7px;
+  padding: 7px 10px;
+}
+
+.empty-pin {
+  color: #687386;
+}
+
+@media (max-width: 850px) {
+  .repo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    padding: 18px 4%;
+  }
+
+  .container {
+    width: 94%;
+  }
+
+  .profile-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .repo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h2 {
+    font-size: 27px;
+  }
+}
